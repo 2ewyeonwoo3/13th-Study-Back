@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🦁아기사자 대나무숲🏞</title>
+  </head>
+  <body>
+    <div class="content">
+      <h1>🦁아기사자 대나무숲🏞</h1>
+      <ul>
+        {% for post in posts %}
+        <li>
+          <a href="{% url 'detail' pk=post.id %}">{{post.title}}</a>
+          <span>{{post.upload_time}}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
