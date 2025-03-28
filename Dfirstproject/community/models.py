@@ -10,3 +10,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Question(Post):
+    name = models.CharField('Name', max_length=10, blank=True)
+    status = models.BooleanField('Status', blank=False)
+    file = models.FileField('File', blank=True)
