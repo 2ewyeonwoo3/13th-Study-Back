@@ -20,6 +20,6 @@ from community.views import List, detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',List, name="main"),
+    path('', list, name="main"),
     path('<int:pk>', detail, name="detail")
 ]

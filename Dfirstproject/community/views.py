@@ -4,7 +4,7 @@ from community.models import Post
 
 # Create your views here.
 
-def List(request):
+def list(request):
     posts = Post.objects.filter(upload_time__lte = timezone.now()).order_by('upload_time')
     return render(request, 'list.html', {'posts':posts})
 
