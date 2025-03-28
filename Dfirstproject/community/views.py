@@ -11,3 +11,11 @@ def list(request):
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'detail.html', {'post':post})
+
+def question_list(request):
+    questions = Question.objects.only('title', 'upload_time', 'name', 'status').order_by('upload_time')
+    return render(request, 'question_list.html', {'questions':questions})
+
+def question_detail(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+    return render(request, 'question_detail.html', {'question':question})
