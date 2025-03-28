@@ -21,5 +21,7 @@ from community.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', list, name="main"),
-    path('<int:pk>', detail, name="detail")
+    path('<int:pk>', detail, name="detail"),
+    path('/qna', question_list, name="Q&A list"),
+    path('/qna/<int:pk>', question_detail, name="Q&A detail")
 ]
