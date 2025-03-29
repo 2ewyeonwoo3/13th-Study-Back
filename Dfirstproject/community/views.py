@@ -21,7 +21,7 @@ def question_List(request):
 
 def question_detail (request,pk):
   question = get_object_or_404(Question, pk=pk)
-  return render(request, 'question_detail.html', {'quesiton':question})
+  return render(request, 'question_detail.html', {'question':question})
   
 
 
