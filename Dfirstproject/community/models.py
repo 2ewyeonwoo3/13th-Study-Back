@@ -12,6 +12,6 @@ class Post(models.Model):
         return self.title
 
 class Question(Post):
-    name = models.CharField('Name', max_length=10, blank=True)
-    status = models.BooleanField('Status', blank=False)
+    name = models.CharField('Name', max_length=10, blank=True, unique=True)
+    status = models.BooleanField('Status')
     file = models.FileField('File', blank=True)
