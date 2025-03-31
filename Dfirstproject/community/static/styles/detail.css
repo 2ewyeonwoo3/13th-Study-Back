@@ -1,0 +1,31 @@
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--space-24);
+
+  & > h2 {
+    width: 100%;
+  }
+  & > div {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  #info {
+    gap: var(--space-24);
+
+    & > p {
+      white-space: nowarp;
+    }
+  }
+  & > hr {
+    width: 100%;
+    height: 1px;
+    background-color: var(--ewha-grey);
+  }
+  #content {
+    width: 100%;
+  }
+}
+aside > ol {
+  width: 13.1875rem;
+}
