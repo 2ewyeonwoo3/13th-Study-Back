@@ -1,7 +1,7 @@
 from django.contrib import admin
-import community.models as Models
+from community.models import Community, Question
 
 # Register your models here.
 
-for Model in Models:
-    admin.site.register(Model)
+admin.site.register(Community)
+admin.site.register(Question)
