@@ -1,0 +1,22 @@
+<body>
+    <div class = "content">
+        <h1> 🦁아기사자 대나무숲🦁</h1>
+        <h1> 💚자유게시판💚</h1>
+
+        <ol>
+            {% for post in posts %}
+            <li><a href="{% url 'detail_post' pk=post.id %}">{{post.title}}</a>
+                <span>{{post.upload_time}}</span></li>
+            {% endfor %}
+            </ol>
+
+        <h1> ❓질문게시판❓</h1>
+        <ol>
+            {% for question in questions %}
+            <li><a href="{% url 'detail_question' pk=question.id %}">{{question.title}}</a>
+                <span>{{question.upload_time}}</span></li>
+            {% endfor %}
+            </ol>
+
+    </div>
+</body>
