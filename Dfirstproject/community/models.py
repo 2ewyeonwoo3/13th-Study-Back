@@ -1,11 +1,22 @@
 from django.db import models
+import django.utils
 
 # Create your models here.
 
 class Post(models.Model):
     title = models.CharField('Title', max_length=50, blank=True)
-    upload_time = models.DateTimeField(unique=True)
+    upload_time = models.DateTimeField(unique=True, default=django.utils.timezone.now)
     content = models.TextField('Content')
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        abstract = True
+
+class Community(Post):
+    pass
+
+class Question(Post):
+    name = models.CharField('Name', max_length=10, blank=True)
+    status = models.BooleanField('Status')
