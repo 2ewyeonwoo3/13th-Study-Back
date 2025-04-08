@@ -2,6 +2,7 @@
   <div class="content">
     <h1>🦁아기사자 대나무숲🌳</h1>
     <h2>📘 Post 목록</h2>
+    <a href="{%url 'new' %}">새로운 post 만들기!</a>
     <ul>
       {% for post in posts %}
       <li>
@@ -12,6 +13,7 @@
     </ul>
 
     <h2>? Question 목록</h2>
+    <a href="{%url 'question_new' %}">새로운 question 만들기!</a>
     <ul>
       {% for question in questions %}
       <li>
