@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from community.views import List, detail, question_detail, new, create, delete, update_page, update,question_delete,question_update_page,question_update, question_create, question_new
+#from community.views import List, detail, question_detail, new, create, delete, update_page, update,question_delete,question_update_page,question_update, question_create, question_new
+from community.views import *
+#views.py 안의 모든 "공개된" 함수, 클래스, 변수들을 현재 파일로 가져옴
+import community.views
+#views.py 자체를 community.views라는 모듈로 가져옴
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +37,8 @@ urlpatterns = [
     path('question_update/<int:question_id>/', question_update, name='question_update'),
     path('question/new/', question_new, name='question_new'),
     path('question/create/', question_create, name='question_create'),
+    path('<int:post_id>/comment',community.views.add_comment,name = 'add_comment'),
+    path('<int:post_id>/like/', community.views.like_post, name='like_post'),
+
 
 ]

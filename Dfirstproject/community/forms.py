@@ -1,6 +1,5 @@
 from django import forms
-from .models import Post
-from .models import Question
+from .models import Post, Question, Comment 
 
 class Postform(forms.ModelForm):
   class Meta:
@@ -11,3 +10,8 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ['title', 'content']
+
+class Commentform(forms.ModelForm):
+   class Meta:
+      model=Comment
+      fields=['username','comment_text']
