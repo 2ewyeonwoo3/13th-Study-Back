@@ -1,9 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from community.models import Post, Question
-from community.forms import Postform, QuestionForm 
-from .forms import Commentform
-from .models import *
+from community.models import *
+from community.forms import Postform, QuestionForm, Commentform
 
 # Create your views here.
 
@@ -117,7 +115,6 @@ def like_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     Like.objects.create(post=post)
     return redirect('detail', pk=post_id)
-
 
 
 
