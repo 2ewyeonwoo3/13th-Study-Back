@@ -1,0 +1,31 @@
+h1 {
+  color: rgba(21, 84, 79, 0.907);
+  text-align: center;
+  background-color: rgba(227, 248, 247, 0.91);
+  padding: 10px;
+}
+
+body {
+  border: 2px dashed rgba(21, 84, 79, 0.907);
+  background-color: rgb(200, 248, 200);
+  padding: 30px;
+}
+
+h2 {
+  text-align: left;
+  color: rgb(255, 166, 0);
+}
+.my-info {
+  margin: 20px auto;
+  color: rgba(21, 84, 79, 0.907);
+  text-align: right;
+  background-color: rgba(169, 215, 201, 0.91);
+}
+
+.post {
+  background-color: rgba(227, 248, 247, 0.91);
+}
+
+.question {
+  background-color: rgba(227, 248, 247, 0.91);
+}
