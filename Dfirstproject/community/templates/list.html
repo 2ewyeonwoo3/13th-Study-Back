@@ -1,7 +1,21 @@
 <body>
   <div class="content">
     <h1>🦁아기사자 대나무숲🌳</h1>
-    <h2>📘 Post 목록</h2>
+
+    {% if not user.is_authenticated %}
+    <a href="{%url 'signup' %}">회원가입하기</a>
+    <a href="{%url 'login' %}">로그인하기</a>
+    {% endif %} {% if user.is_authenticated %}
+    <a href="{%url 'logout' %}">로그아웃하기</a>
+    <p>
+      내 닉네임: {{user.username}}
+      <br />
+      <br />아이디:{{user.username}} / 닉네임: {{user.nickname}} /
+      대학:{{user.university}} / 위치: {{user.location}} / 최애:
+      {{user.favorites}}
+    </p>
+    {% endif %}
+    <h2>📘 Post 게시판</h2>
     <a href="{%url 'new' %}">새로운 post 만들기!</a>
     <ul>
       {% for post in posts %}
@@ -12,7 +26,7 @@
       {% endfor %}
     </ul>
 
-    <h2>? Question 목록</h2>
+    <h2>? Question 게시판</h2>
     <a href="{%url 'question_new' %}">새로운 question 만들기!</a>
     <ul>
       {% for question in questions %}
