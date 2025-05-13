@@ -42,8 +42,10 @@ urlpatterns = [
     path('question/create/', question_create, name='question_create'),
     path('<int:post_id>/comment',community.views.add_comment,name = 'add_comment'),
     path('<int:post_id>/like/', community.views.like_post, name='like_post'),
+    path('question/<int:post_id>/comment',community.views.question_add_comment,name = 'question_add_comment'),
+    path('question/<int:post_id>/like/', community.views.question_like_post, name='question_like_post'),
     path('accounts/login', accounts.views.login_view,name="login"),
     path('accounts/logoout', accounts.views.logout_view, name="logout"),
     path('accounts/signup', accounts.views.signup_view, name="signup"),
 
-]
+] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

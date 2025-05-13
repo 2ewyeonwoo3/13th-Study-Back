@@ -15,9 +15,11 @@ class Post(models.Model):
   content = models.TextField('Content')
   hashtag = models.ManyToManyField(Hashtag)
   like = models.PositiveIntegerField(default=0)
+  photo = models.ImageField(blank = True, null = True, upload_to = "post_photo")
 
   def __str__(self):
     return self.title
+  
   def summary(self):
     return self.body[:100]
   
@@ -45,8 +47,10 @@ class Question(models.Model):
   title = models.CharField('Title', max_length =50, blank = True)
   upload_time = models.DateTimeField(unique=True)
   content = models.TextField('Content')
+  photo = models.ImageField(blank = True, null = True, upload_to = "question_photo")
   
   def __str__(self):
     return self.title
+  
   def summary(self):
     return self.body[:100]
