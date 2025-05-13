@@ -10,7 +10,7 @@ def List(request):
   questions= Question.objects.filter(upload_time__lte = timezone.now()).order_by('upload_time')
   return render(request, 'list.html', {'posts':posts, 'questions':questions})
 
-def detail (request,pk):
+def detail(request,pk):
   post_detail = get_object_or_404(Post, pk=pk)
   post_hashtag= post_detail.hashtag.all()
   like_count = post_detail.likes.count()
@@ -100,7 +100,7 @@ def add_comment(request, post_id):
    blog= get_object_or_404(Post, pk = post_id)
 
    if request.method =="POST":
-      form = Commentform(request.POST)
+      form = Commentform(request.POST, request.FILES)
 
       if form.is_valid():
          comment = form.save(commit=False)
@@ -112,6 +112,26 @@ def add_comment(request, post_id):
    return render(request,'add_comment.html',{'form':form})
 
 def like_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    Like.objects.create(post=post)
+    return redirect('detail', pk=post_id)
+
+def question_add_comment(request, post_id):
+   blog= get_object_or_404(Post, pk = post_id)
+
+   if request.method =="POST":
+      form = Commentform(request.POST)
+
+      if form.is_valid():
+         comment = form.save(commit=False)
+         comment.post = blog
+         comment.save()
+         return redirect('detail',post_id)
+   else:
+      form=Commentform()
+   return render(request,'add_comment.html',{'form':form})
+
+def question_like_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     Like.objects.create(post=post)
     return redirect('detail', pk=post_id)

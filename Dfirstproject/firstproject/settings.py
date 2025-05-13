@@ -119,9 +119,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+#브라우저에서 파일을 어떻게 접근할지 경로 지정 (/static/)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-] #STATICFILES_DIRS가 없으면 Django는 오직 앱 내부의 app/static/app/ 경로만 찾음. 
+  BASE_DIR / 'static',
+  os.path.join(BASE_DIR, 'static'),
+]
+#개발 중 사용할 정적파일 경로 목록 지정 (BASE_DIR/static)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#collectstatic으로 정적 파일이 복사될 대상 디렉토리 (예: BASE_DIR/staticfiles)
+
+
+#STATICFILES_DIRS가 없으면 Django는 오직 앱 내부의 app/static/app/ 경로만 찾음. 
 # 근데 지금처럼 너는 루트 static 폴더를 쓰니까 이걸 따로 알려줘야 해.
 
 
@@ -130,3 +138,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
