@@ -1,0 +1,31 @@
+<!-- templates/question_update.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>질문 수정하기</title>
+    <link rel="stylesheet" href="{% static 'css/tyle.css' %}" />
+  </head>
+  <body>
+    <h1>질문 수정하기</h1>
+    <form action="{% url 'question_update' question_update.id %}" method="POST">
+      {% csrf_token %}
+      <label>제목:</label>
+      <input
+        type="text"
+        name="title"
+        value="{{ question_update.title }}"
+      /><br /><br />
+
+      <label>내용:</label><br />
+      <textarea name="content" rows="10" cols="50">
+{{ question_update.content }}</textarea
+      ><br /><br />
+
+      <button type="submit">수정 완료</button>
+    </form>
+  </body>
+</html>

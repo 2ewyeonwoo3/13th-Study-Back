@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>질문 상세페이지</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body>
+    <div>
+      <h1>{{ question.title }}</h1>
+      <br />
+      <span>{{ question.upload_time }}</span>
+      <br />
+      {% if question.photo %}
+      <img src="{{ question.photo.url}}" alt="" height="200px" />
+      {% endif %}
+      <br />
+      <div class="content">{{ question.content }}</div>
+      <p>{{comment.comment_text | linebreaks}}</p>
+      <a href="{% url 'question_delete' question.id %}" class="button-link"
+        >삭제하기</a
+      >
+      <a href="{% url 'question_update_page' question.id %}" class="button-link"
+        >수정하기</a
+      >
+      <a href="{% url 'main' %}" class="button-link">홈으로 돌아가기</a>
+    </div>
+  </body>
+</html>
