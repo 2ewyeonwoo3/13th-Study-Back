@@ -14,7 +14,7 @@ urlpatterns = [
     path('questions/', QuestionList.as_view()),
     path('questions/<int:pk>/', QuestionDetail.as_view()),
 
-    path('answers/', AnswerList.as_view()),             # POST (댓글 생성)
+    path('answers/', AnswerList.as_view()),             # POST (답글 생성)
     path('answers/<int:pk>/', AnswerDetail.as_view()),
 
     path('myquestions/', MyQuestionList.as_view()),
@@ -22,7 +22,7 @@ urlpatterns = [
 
     path('questions/create/', QuestionCreateAPIView.as_view()),
     path('answers/create/', AnswerCreateAPIView.as_view()),
-    
+
     path('questions/<int:pk>/like/', QuestionLikeView.as_view()),
     path('answers/<int:pk>/like/', AnswerLikeView.as_view()),
 

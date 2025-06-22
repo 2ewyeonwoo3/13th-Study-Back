@@ -114,7 +114,7 @@ class QuestionList(views.APIView):
         
         #입력받은 게시글 데이터를 시리얼라이저에 넣어 변환
         #데이터가 유효하면 저장하고 데이터와 상태코드를 반환
-    def question(self, request, format=None):     
+    def post(self, request, format=None):     
         serializer = QuestionSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -150,7 +150,7 @@ class QuestionDetail(views.APIView):
         if question.user != request.user:
             return Response({"detail": "수정 권한이 없습니다."}, status=status.HTTP_403_FORBIDDEN)
 
-        serializer=QuestionSerializer(question, data=request.data)
+        serializer=QuestionSerializer(question, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -203,7 +203,7 @@ class AnswerDetail(views.APIView):
         if answer.user != request.user:
             return Response({"detail": "수정 권한이 없습니다."}, status=status.HTTP_403_FORBIDDEN)
         
-        serializer = AnswerSerializer(answer, data=request.data)
+        serializer = AnswerSerializer(answer, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
