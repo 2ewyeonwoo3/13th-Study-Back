@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import User
+from .models import *
 from rest_framework import views
 from .serializers import *
 from rest_framework.response import Response
 
-# Create your views here.
 
+#post 메소드를 처리한다.
 class SignupView(views.APIView):
     serializer_class = UserSerializer
     def post(self, request):
@@ -23,6 +23,8 @@ class LoginView(views.APIView):
         if serializer.is_valid():
             return Response({"message":'로그인 성공','data':serializer.validated_data})
         return Response({"message":'로그인 실패','error':serializer.errors})
+
+
     
 
 

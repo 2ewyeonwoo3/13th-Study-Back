@@ -6,12 +6,14 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
-        fields=['id','username','email','password']
+        fields=['id','username','email','password', 'birth_date', 'phone_number']
 
-    def create(self, validated_data):
-        user = User.objects.create(
+    def create(self, validated_data): #입력받은 유저 데이터 저장을 처리한다. 
+        user = User.objects.create(   #전달받은 데이터 중 이메일과 유저네임 정보는 그대로 넣어주고 비밀번호는 set_password 함수를 이용하여 암호화한 후 저장
             email=validated_data['email'],
             username=validated_data['username'],
+            birth_date=validated_data.get('birth_date'),      
+            phone_number=validated_data.get('phone_number') 
         )
         user.set_password(validated_data['password'])
         user.save()
@@ -22,7 +24,7 @@ class UserLoginSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=64)
     password = serializers.CharField(max_length=128, write_only=True)
 
-    def validate(self, data):
+    def validate(self, data): #입력받은 데이터의 유효성을 검증함
         email=data.get('email',None)
         password=data.get('password',None)
 
