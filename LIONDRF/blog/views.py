@@ -18,10 +18,12 @@ class PostList(views.APIView):
         
         keyword = request.GET.get('keyword')
         sort = request.GET.get('sort')
+
         if keyword:
             post = Post.objects.filter(title__icontains=keyword)
         else:
             post = Post.objects.all()
+
         # ?sort=title : 오름차순, ?sort=-title : 내림차순
         if sort in ['title', '-title', 'created_at', '-created_at']:
             post = post.order_by(sort)
@@ -32,9 +34,11 @@ class PostList(views.APIView):
             'results': serializer.data
         })
         
+
         #입력받은 게시글 데이터를 시리얼라이저에 넣어 변환
         #데이터가 유효하면 저장하고 데이터와 상태코드를 반환
     def post(self, request, format=None):     
+
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -67,6 +71,7 @@ class PostDetail(views.APIView):
         post.delete()
         return Response({"message":"게시물 삭제 성공"})
     
+
 
 class CommentList(views.APIView):      
     def post(self, request, format=None):

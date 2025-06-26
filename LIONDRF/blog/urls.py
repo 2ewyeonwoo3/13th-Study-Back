@@ -6,6 +6,7 @@ app_name = 'blog'
 urlpatterns = [
     path('', PostList.as_view()),
     path('<int:pk>/', PostDetail.as_view()),
+<<<<<<< main
     path('create/', PostList.as_view()),
 
     path('comments/', CommentList.as_view()),             # POST (댓글 생성)
@@ -26,4 +27,7 @@ urlpatterns = [
     path('questions/<int:pk>/like/', QuestionLikeView.as_view()),
     path('answers/<int:pk>/like/', AnswerLikeView.as_view()),
 
+=======
+    path('create/', PostList.as_view())
+>>>>>>> 2ewyeonwoo3
 ]

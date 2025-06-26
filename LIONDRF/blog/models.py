@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.conf import settings
 
 
+
 # Create your models here.
 
 LANGUAGE_CHOICES = (
@@ -13,7 +14,7 @@ LANGUAGE_CHOICES = (
 )
 
 class Post(models.Model):
-    
+
     title = models.CharField(max_length=200)
     date = models.DateTimeField('date published')
     body = models.TextField()
@@ -21,7 +22,7 @@ class Post(models.Model):
 
     def __str__ (self):
         return self.title
-    
+
 
 class Comment(models.Model):
     post=models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
@@ -59,5 +60,6 @@ class Answer(models.Model):
     def __str__(self):
         return self.answer_text
     
+
 
 
